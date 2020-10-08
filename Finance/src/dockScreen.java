@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,8 +38,10 @@ public class dockScreen extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
 	 */
-public dockScreen() {
+public dockScreen() throws IOException {
+	
     	
         //construct preComponents
         String[] jcomp3Items = {"Sim 1", "Sim 2", "Sim 3"};
@@ -65,18 +69,18 @@ public dockScreen() {
     	background = new JLabel("", img, JLabel.CENTER);
     	background.setBounds(0,0,330,475);
     	getContentPane().add(background);
+    	
+    	jcomp1.addActionListener(new ActionListener() { 
+    		  public void actionPerformed(ActionEvent e) { 
+    			    mainFrame.init();
+    			    dispose();
+    			  } 
+    			} );
     	setVisible(true);
     	
-    	jcomp1.addActionListener(new ActionListener()
-    	{
-    	  public void actionPerformed(ActionEvent e)
-    	  {
-    	    // display/center the jdialog when the button is pressed
-    	    mainFrame.init();
-    	    dispose();
+    	
     	    
-    	  }
-    	});
+    	
 //    	Icon i=new ImageIcon("Button.jpg");
 //    	
 //    	jcomp1.setIcon(i);
